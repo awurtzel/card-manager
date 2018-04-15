@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
+    "redux-duck": "^1.0.2",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {

@@ -10,14 +10,6 @@ class CardListPanel extends PureComponent {
         cardList: PropTypes.array,
     };
 
-    static drawItem(item) {
-        return (
-            <div key={item.id}>
-                Name: '{item.name}', Type: {item.type}, Faction: '{item.faction}'
-            </div>
-        )
-    }
-
     render() {
         return (
             <div className="CardListPanel">
@@ -25,7 +17,9 @@ class CardListPanel extends PureComponent {
                 {
                     this.props.cardList.map((item, index) => {
                         return (
-                            this.drawItem(item)
+                            <div key={item.id}>
+                                Name: '{item.name}', Type: {item.type}, Faction: '{item.faction}'
+                            </div>
                         );
                     })
                 }

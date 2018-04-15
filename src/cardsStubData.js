@@ -1,7 +1,7 @@
 const cardsStubData = {
     status: 200,
     data: {
-        cards:
+        cardList:
             [
                 {
                     id: 1,
