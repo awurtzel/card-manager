@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Field} from "redux-form";
 
 const CardModifyPanel = props => {
@@ -38,6 +39,20 @@ const CardModifyPanel = props => {
                             type="text"
                             placeholder="Faction"
                         />
+                    </div>
+                </div>
+                <div>
+                    <label>Card Number</label>
+                    <div>
+                        <Field
+                            id="number"
+                            name="number"
+                            component="input"
+                            type="number"
+                        />
+                    </div><label>of</label>
+                    <div>
+                        <label>{props.initialValues.totalNum}</label>
                     </div>
                 </div>
             </form>
