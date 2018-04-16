@@ -9,6 +9,7 @@ const CardModifyPanel = props => {
                 <div>
                     <label>Name</label>
                     <div>
+                        {props.initialValues.name}
                         <Field
                             id="name"
                             name="name"
@@ -44,20 +45,19 @@ const CardModifyPanel = props => {
                 <div>
                     <label>Card Number</label>
                     <div>
-                        <Field
-                            id="number"
-                            name="number"
-                            component="input"
-                            type="number"
-                        />
+                        <input value={props.cardNumber}/>
                     </div><label>of</label>
                     <div>
-                        <label>{props.initialValues.totalNum}</label>
+                        <label>{props.totalNumCards}</label>
                     </div>
                 </div>
             </form>
         </div>
     )
+};
+CardModifyPanel.propTypes = {
+    cardNumber: PropTypes.number,
+    totalNumCards: PropTypes.number,
 };
 
 export default CardModifyPanel;
