@@ -4,38 +4,21 @@ import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import CardModifyPanel from './CardModifyPanel'
 
-const mapStateToProps = (state, props) => ({
-    initialValues: state.cardList.cardList && state.cardList.cardList[0],
-    totalNumCards: state.cardList.cardList && state.cardList.cardList.length,
-});
-
 class CardModifyContainer extends PureComponent {
     static defaultProps = {
-        initialValues: {
-          name: 'NAME',
-          type: 'TYPE',
-          faction: 'FACTION',
-        },
         totalNumCards: 0,
-        cardNumber: 0,
+        currCardNumber: 0,
+        cardSelected: null,
     };
 
     static propTypes = {
-        initialValues: PropTypes.shape({
-            name: PropTypes.string,
-            type: PropTypes.string,
-            faction: PropTypes.string,
-        }),
         totalNumCards: PropTypes.number,
-        cardNumber: PropTypes.number
+        currCardNumber: PropTypes.number,
+        cardSelected: PropTypes.func,
     };
 
-    componentWillReceiveProps(nextProps) {
-        this.props.initialize(nextProps.initialValues);
-    };
-
-    selectCard = cardIndex => {
-
+    cardSelected = (event) => {
+        this.props.cardSelected(event);
     };
 
     handleSubmit = event => {
@@ -48,16 +31,14 @@ class CardModifyContainer extends PureComponent {
                 <CardModifyPanel
                   {...this.props}
                   handleSubmit={this.handleSubmit}
-                  selectCard={this.selectCard}
+                  cardSelected={this.cardSelected}
               />
             </div>
         );
     }
 }
 
-const connectedComponent = connect(
-    mapStateToProps
-)(CardModifyContainer);
+const connectedComponent = connect()(CardModifyContainer);
 const formWrapper = reduxForm({
     form: 'CardModify',
     enableReinitialize: true,

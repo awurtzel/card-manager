@@ -9,7 +9,6 @@ const CardModifyPanel = props => {
                 <div>
                     <label>Name</label>
                     <div>
-                        {props.initialValues.name}
                         <Field
                             id="name"
                             name="name"
@@ -45,7 +44,7 @@ const CardModifyPanel = props => {
                 <div>
                     <label>Card Number</label>
                     <div>
-                        <input value={props.cardNumber}/>
+                        <input type="number" value={props.currCardNumber} onChange={props.cardSelected}/>
                     </div><label>of</label>
                     <div>
                         <label>{props.totalNumCards}</label>
@@ -56,7 +55,8 @@ const CardModifyPanel = props => {
     )
 };
 CardModifyPanel.propTypes = {
-    cardNumber: PropTypes.number,
+    cardSelected: PropTypes.func,
+    currCardNumber: PropTypes.number,
     totalNumCards: PropTypes.number,
 };
 

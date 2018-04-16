@@ -2,17 +2,19 @@ import cardsStubData from "../cardsStubData";
 
 const defaultState = {
     cardList: [],
+    currCardNumber: 0,
 };
 
 export const actions = {
     SET_CARD_LIST: 'SET_CARD_LIST',
+    SET_CURR_CARD_NUMBER: 'SET_CURR_CARD_NUMBER',
 };
 
 const USE_STUB_DATA = true;
 
 function fetchStubCardList() {
     return (dispatch) => {
-        dispatch(receiveCard(cardsStubData.data))
+        dispatch(receiveCardList(cardsStubData.data))
     };
 }
 
@@ -27,7 +29,7 @@ const fetchServiceCardList = () => {
         )
         .then(response => {
             if (response.status === 200) {
-                dispatch(receiveCard(response.data))
+                dispatch(receiveCardList(response.data))
             } else {
                 const flash = {
                     type: 'error',
@@ -48,10 +50,17 @@ export function fetchCardList() {
     }
 }
 
-export function receiveCard(data) {
+export function receiveCardList(data) {
     return {
         type: actions.SET_CARD_LIST,
-        payload: data.cardList
+        payload: data.cardList,
+    };
+}
+
+export function setCurrCardNumber(data) {
+    return {
+        type: actions.SET_CURR_CARD_NUMBER,
+        payload: data,
     };
 }
 
@@ -63,6 +72,12 @@ export function reducer(state = defaultState, action) {
                 cardList: action.payload
             };
         }
+        case actions.SET_CURR_CARD_NUMBER: {
+            return {
+                ...state,
+                currCardNumber: action.payload
+            };
+        }
         default: {
             return state;
         }
@@ -70,5 +85,5 @@ export function reducer(state = defaultState, action) {
 }
 
 export default {
-    fetchCardList, actions,
+    fetchCardList, setCurrCardNumber, actions,
 };
