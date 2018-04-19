@@ -25,7 +25,6 @@ const CardModifyPanel = props => {
                             name="type"
                             component="input"
                             type="text"
-                            placeholder="Type"
                         />
                     </div>
                 </div>
@@ -37,7 +36,6 @@ const CardModifyPanel = props => {
                             name="faction"
                             component="input"
                             type="text"
-                            placeholder="Faction"
                         />
                     </div>
                 </div>
