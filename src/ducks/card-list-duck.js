@@ -10,7 +10,7 @@ export const actions = {
     SET_CURR_CARD_NUMBER: 'SET_CURR_CARD_NUMBER',
 };
 
-const USE_STUB_DATA = true;
+const USE_STUB_DATA = false;
 
 function fetchStubCardList() {
     return (dispatch) => {
@@ -20,7 +20,7 @@ function fetchStubCardList() {
 
 const fetchServiceCardList = () => {
     return (dispatch) => {
-        fetch('https://api.myjson.com/bins/18y6bb')
+        fetch('http://localhost:8888/api/cardList')
         .then(response =>
             response.json().then(data => ({
                 data: data,
@@ -53,7 +53,7 @@ export function fetchCardList() {
 export function receiveCardList(data) {
     return {
         type: actions.SET_CARD_LIST,
-        payload: data.cardList,
+        payload: data,
     };
 }
 
