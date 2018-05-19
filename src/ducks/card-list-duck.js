@@ -20,7 +20,7 @@ function fetchStubCardList() {
 
 const fetchServiceCardList = () => {
     return (dispatch) => {
-        fetch('http://localhost:8888/api/cardList')
+        fetch('http://localhost:8888/api/cards')
         .then(response =>
             response.json().then(data => ({
                 data: data,
