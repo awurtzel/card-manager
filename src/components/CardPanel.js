@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import CardListPanel from "./CardListPanel";
-import {fetchCardList, setCurrCardNumber} from "../ducks/card-list-duck";
+import {fetchCardList, setCurrCardNumber} from "../ducks/card-duck";
 import CardModifyContainer from "./CardModifyContainer";
 
 const mapStateToProps = (state, props) => ({

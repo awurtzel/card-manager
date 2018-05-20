@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import {Field} from "redux-form";
 
 const CardModifyPanel = props => {
+    const { submitting } = props;
     return (
         <div className="CardModifyPanel">
-            <form id="CardModifyForm" onSubmit={props.handleSubmit}>
+            <form id="CardModifyForm" onSubmit={props.handleSubmit(props.createCard)}>
                 <div>
                     <label>Name</label>
                     <div>
@@ -48,6 +49,7 @@ const CardModifyPanel = props => {
                         <label>{props.totalNumCards}</label>
                     </div>
                 </div>
+                <button type="submit" disabled={submitting}>Submit</button>
             </form>
         </div>
     )

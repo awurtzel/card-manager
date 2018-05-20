@@ -3,6 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import CardModifyPanel from './CardModifyPanel'
+import {createCard} from "../ducks/card-duck";
+
+const mapDispatchToProps = dispatch => ({
+    createCard: (card) => {
+        dispatch(createCard(card));
+    },
+});
 
 class CardModifyContainer extends PureComponent {
     static defaultProps = {
@@ -21,16 +28,11 @@ class CardModifyContainer extends PureComponent {
         this.props.cardSelected(event);
     };
 
-    handleSubmit = event => {
-
-    };
-
     render() {
         return (
             <div>
                 <CardModifyPanel
                   {...this.props}
-                  handleSubmit={this.handleSubmit}
                   cardSelected={this.cardSelected}
               />
             </div>
@@ -38,7 +40,9 @@ class CardModifyContainer extends PureComponent {
     }
 }
 
-const connectedComponent = connect()(CardModifyContainer);
+const connectedComponent = connect(
+    mapDispatchToProps
+)(CardModifyContainer);
 const formWrapper = reduxForm({
     form: 'CardModify',
     enableReinitialize: true,
